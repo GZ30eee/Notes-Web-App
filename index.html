@@ -1,44 +1,109 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">  
-    <title>Notes App in JavaScript</title>
+    <title>Notes App</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Iconscout Link For Icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="popup-box">
       <div class="popup">
         <div class="content">
           <header>
-            <p></p>
+            <p>Add New Note</p>
             <i class="uil uil-times"></i>
           </header>
           <form action="#">
             <div class="row title">
-              <label>Title</label>
-              <input type="text" spellcheck="false">
+              <input type="text" spellcheck="false" placeholder="Note title" id="note-title">
+            </div>
+            <div class="row category">
+              <select id="category">
+                <option value="General">General</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Ideas">Ideas</option>
+              </select>
+              <div class="color-options">
+                <div class="color-option" data-color="#6A93F8" style="background-color: #6A93F8;"></div>
+                <div class="color-option" data-color="#FF9E4F" style="background-color: #FF9E4F;"></div>
+                <div class="color-option" data-color="#4CAF50" style="background-color: #4CAF50;"></div>
+                <div class="color-option" data-color="#9C27B0" style="background-color: #9C27B0;"></div>
+                <div class="color-option" data-color="#F44336" style="background-color: #F44336;"></div>
+              </div>
+            </div>
+            <div class="formatting-toolbar">
+              <button type="button" data-command="bold" title="Bold"><i class="uil uil-bold"></i></button>
+              <button type="button" data-command="italic" title="Italic"><i class="uil uil-italic"></i></button>
+              <button type="button" data-command="insertUnorderedList" title="Bullet List"><i class="uil uil-list-ul"></i></button>
+              <button type="button" data-command="insertOrderedList" title="Numbered List"><i class="uil uil-list-ol"></i></button>
             </div>
             <div class="row description">
-              <label>Description</label>
-              <textarea spellcheck="false"></textarea>
+              <textarea spellcheck="false" placeholder="Write your note here..." id="note-content"></textarea>
             </div>
-            <button></button>
+            <div class="note-preview">
+              <h3>Preview</h3>
+              <div id="preview-content"></div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="secondary" id="cancel-btn">Cancel</button>
+              <button type="submit" id="save-btn">Save Note</button>
+            </div>
           </form>
         </div>
       </div>
     </div>
-    <div class="wrapper">
-      <li class="add-box">
-        <div class="icon"><i class="uil uil-plus"></i></div>
-        <p>Add new note</p>
-      </li>
+
+    <div class="app-container">
+      <header class="app-header">
+        <h1><i class="uil uil-notes"></i> Notes</h1>
+        <div class="header-controls">
+          <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search notes..." id="search-input">
+          </div>
+          
+          <select id="filter-select">
+            <option value="All">All Notes</option>
+            <option value="General">General</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Ideas">Ideas</option>
+            <option value="Archived">Archived</option>
+          </select>
+          
+          <button class="btn-icon" id="theme-toggle" title="Toggle theme">
+            <i class="uil uil-moon"></i>
+          </button>
+          
+          <div class="dropdown">
+            <button class="btn-icon" id="more-options" title="More options">
+              <i class="uil uil-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu">
+              <button id="export-btn"><i class="uil uil-export"></i> Export Notes</button>
+              <button id="import-btn"><i class="uil uil-import"></i> Import Notes</button>
+              <input type="file" id="import-file" accept=".json" style="display: none;">
+              <button id="archive-view-btn"><i class="uil uil-archive"></i> View Archive</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="notes-container">
+        <div class="add-note-card" id="add-note-btn">
+          <div class="add-icon">
+            <i class="uil uil-plus"></i>
+          </div>
+          <p>Add new note</p>
+        </div>
+        <!-- Notes will be inserted here -->
+      </main>
     </div>
 
     <script src="script.js"></script>
-    
   </body>
 </html>
